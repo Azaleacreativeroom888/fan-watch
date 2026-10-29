@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | 時の針</title>
+<style>
+:root{
+  --navy:#0b1f3a;
+  --navy2:#13305a;
+  --blue:#2f6fb5;
+  --sky:#cfe3f7;
+  --brown:#7a4a2b;
+  --brown2:#a8703f;
+  --cream:#f6efe3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  background:var(--cream);color:var(--navy);line-height:1.9;
+}
+a{color:inherit;text-decoration:none}
+
+header{background:var(--navy);border-bottom:4px solid var(--brown);position:sticky;top:0;z-index:10}
+.header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+}
+.logo{color:var(--sky);font-size:1.4rem;letter-spacing:.15em;font-weight:bold}
+.logo span{color:var(--brown2)}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{
+  display:block;padding:6px 14px;color:var(--sky);font-size:.95rem;
+  border-radius:20px;border:1px solid transparent;transition:.2s;
+}
+nav a:hover,nav a.current{background:var(--blue);border-color:var(--sky);color:#fff}
+
+.page-title{
+  background:linear-gradient(160deg,var(--navy),var(--navy2));
+  color:var(--sky);text-align:center;padding:44px 20px 50px;
+  position:relative;overflow:hidden;
+}
+.page-title h1{font-size:2rem;letter-spacing:.25em;color:#fff;position:relative;z-index:1}
+.page-title p{color:var(--brown2);letter-spacing:.2em;font-size:.9rem;position:relative;z-index:1}
+
+.dia{
+  position:absolute;width:var(--s,24px);height:var(--s,24px);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  background:linear-gradient(135deg,#fff 0%,var(--sky) 35%,var(--blue) 70%,var(--navy2) 100%);
+  opacity:.7;pointer-events:none;animation:twinkle 4s ease-in-out infinite;
+}
+.dia.br{background:linear-gradient(135deg,#f6e3c8 0%,var(--brown2) 55%,var(--brown) 100%)}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.85)}50%{opacity:.95;transform:scale(1.1)}}
+
+main{max-width:640px;margin:0 auto;padding:36px 16px 0}
+
+/* timeline */
+.timeline{
+  background:#fff;border:2px solid var(--navy);border-radius:12px;
+  box-shadow:5px 5px 0 var(--brown);overflow:hidden;
+}
+.post{
+  padding:18px 22px;border-bottom:1px solid var(--sky);
+  transition:background .2s;
+}
+.post:last-child{border-bottom:none}
+.post:hover{background:#f1f7fd}
+.post time{
+  display:block;font-family:"Courier New",monospace;font-size:.85rem;
+  color:var(--brown);font-weight:bold;margin-bottom:4px;
+}
+.post time::before{content:"◆ ";color:var(--blue);font-size:.8em}
+.post p{font-size:.98rem;word-break:break-word}
+
+.dia-line{text-align:center;color:var(--brown2);letter-spacing:.6em;font-size:.8rem;margin-bottom:8px}
+
+footer{
+  margin-top:70px;background:var(--navy);border-top:4px solid var(--brown);
+  color:var(--sky);text-align:center;padding:26px 20px;font-size:.85rem;
+}
+@media(prefers-reduced-motion:reduce){.dia{animation:none;opacity:.7}}
+@media(max-width:600px){.page-title h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">時の<span>針</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html" class="current">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-title">
+  <span class="dia" style="left:8%;top:20%;--s:24px"></span>
+  <span class="dia br" style="left:20%;top:68%;--s:14px;animation-delay:1.5s"></span>
+  <span class="dia br" style="right:9%;top:18%;--s:22px;animation-delay:1s"></span>
+  <span class="dia" style="right:22%;top:66%;--s:12px;animation-delay:2.5s"></span>
+  <h1>BLOG</h1>
+  <p>勉強の進捗ノート</p>
+</div>
+
+<main>
+  <div class="timeline">
+    <!-- 新しい投稿は一番上に追加してね -->
+    <article class="post">
+      <time>2026.10.28</time>
+      <p>今日から時計の勉強を始めた。まずは機械式時計とクォーツ時計の違いから。ぜんまいと歯車で動くって、改めて考えるとすごい。</p>
+    </article>
+    <article class="post">
+      <time>2026.10.27</time>
+      <p>サイトの準備をした。どんな時計を取り上げていくか、少しずつ考え中。</p>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="dia-line">◇ ◆ ◇ ◆ ◇</div>
+  <p>&copy; 2026 時の針 / Hands of Time</p>
+</footer>
+
+</body>
+</html>
