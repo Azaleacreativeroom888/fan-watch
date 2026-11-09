@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | 時の針</title>
+<style>
+:root{
+  --navy:#0b1f3a;
+  --navy2:#13305a;
+  --blue:#2f6fb5;
+  --sky:#cfe3f7;
+  --brown:#7a4a2b;
+  --brown2:#a8703f;
+  --cream:#f6efe3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  background:var(--cream);color:var(--navy);line-height:1.9;
+}
+a{color:inherit;text-decoration:none}
+
+header{background:var(--navy);border-bottom:4px solid var(--brown);position:sticky;top:0;z-index:10}
+.header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+}
+.logo{color:var(--sky);font-size:1.4rem;letter-spacing:.15em;font-weight:bold}
+.logo span{color:var(--brown2)}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{
+  display:block;padding:6px 14px;color:var(--sky);font-size:.95rem;
+  border-radius:20px;border:1px solid transparent;transition:.2s;
+}
+nav a:hover,nav a.current{background:var(--blue);border-color:var(--sky);color:#fff}
+
+.page-title{
+  background:linear-gradient(160deg,var(--navy),var(--navy2));
+  color:var(--sky);text-align:center;padding:44px 20px 50px;
+  position:relative;overflow:hidden;
+}
+.page-title h1{font-size:2rem;letter-spacing:.25em;color:#fff;position:relative;z-index:1}
+.page-title p{color:var(--brown2);letter-spacing:.2em;font-size:.9rem;position:relative;z-index:1}
+
+.dia{
+  position:absolute;width:var(--s,24px);height:var(--s,24px);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  background:linear-gradient(135deg,#fff 0%,var(--sky) 35%,var(--blue) 70%,var(--navy2) 100%);
+  opacity:.7;pointer-events:none;animation:twinkle 4s ease-in-out infinite;
+}
+.dia.br{background:linear-gradient(135deg,#f6e3c8 0%,var(--brown2) 55%,var(--brown) 100%)}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.85)}50%{opacity:.95;transform:scale(1.1)}}
+
+main{max-width:900px;margin:0 auto;padding:0 20px}
+section{padding:46px 0 6px}
+h2{font-size:1.4rem;text-align:center;letter-spacing:.2em;margin-bottom:24px}
+h2::after{
+  content:"◇ ◆ ◇";display:block;margin:8px auto 0;
+  font-size:.8rem;letter-spacing:.4em;color:var(--brown2);
+}
+
+.intro{
+  background:#fff;border:2px solid var(--navy);border-radius:10px;
+  box-shadow:5px 5px 0 var(--brown);padding:22px 26px;text-align:center;
+}
+
+/* links */
+.group-label{
+  font-size:.85rem;color:var(--brown);letter-spacing:.2em;font-weight:bold;
+  margin:26px 0 12px;display:flex;align-items:center;gap:10px;
+}
+.group-label::before{content:"◆";color:var(--blue);font-size:.8em}
+.group-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--brown2),transparent)}
+.link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.link-card{
+  display:flex;align-items:center;gap:14px;background:#fff;
+  border:2px solid var(--navy);border-left:6px solid var(--blue);border-radius:8px;
+  padding:14px 16px;transition:.2s;
+}
+.link-card:hover{transform:translateY(-3px);box-shadow:4px 4px 0 var(--brown);border-left-color:var(--brown)}
+.link-icon{
+  flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;background:var(--sky);border-radius:6px;
+}
+.link-text{flex:1;min-width:0}
+.link-name{display:block;font-weight:bold;color:var(--blue);font-size:.98rem}
+.link-desc{display:block;font-size:.8rem;color:var(--brown);line-height:1.5}
+.link-arrow{color:var(--brown2);font-size:1.3rem;transition:.2s}
+.link-card:hover .link-arrow{transform:translateX(3px)}
+
+/* form */
+.form-card{
+  background:#fff;border:2px solid var(--navy);border-radius:10px;
+  box-shadow:5px 5px 0 var(--brown);padding:26px 28px;
+}
+.form-intro{font-size:.92rem;margin-bottom:20px;text-align:center}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:.85rem;color:var(--brown);font-weight:bold;letter-spacing:.1em;margin-bottom:6px}
+.form-label::before{content:"◆ ";color:var(--blue);font-size:.8em}
+.required{color:#b03a48;font-style:normal}
+.form-input,.form-textarea{
+  width:100%;font-family:inherit;font-size:1rem;color:var(--navy);
+  background:#f4f8fd;border:2px solid var(--sky);border-radius:6px;
+  padding:10px 14px;outline:none;transition:.2s;
+}
+.form-input:focus,.form-textarea:focus{border-color:var(--blue);background:#fff}
+.form-textarea{min-height:140px;resize:vertical}
+.field-error{display:block;font-size:.8rem;color:#b03a48;margin-top:4px}
+.form-submit{
+  display:block;margin:6px auto 0;font-family:inherit;font-size:1rem;letter-spacing:.2em;
+  color:#fff;background:var(--navy2);border:2px solid var(--navy);border-bottom:5px solid var(--brown);
+  border-radius:24px;padding:10px 34px;cursor:pointer;transition:.2s;
+}
+.form-submit:hover{background:var(--blue)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed}
+.form-success{
+  background:#e6f1fb;border:2px solid var(--blue);border-radius:6px;
+  padding:14px 18px;text-align:center;margin-bottom:18px;
+}
+.form-error-global{
+  background:#fbe9ec;border:2px solid #b03a48;border-radius:6px;
+  padding:12px 16px;color:#b03a48;font-size:.9rem;margin-bottom:16px;
+}
+
+.back-link{
+  display:inline-block;margin-top:28px;padding:8px 18px;font-size:.9rem;
+  border:2px solid var(--navy);border-radius:20px;color:var(--navy);transition:.2s;
+}
+.back-link:hover{background:var(--navy);color:var(--sky)}
+
+.dia-line{text-align:center;color:var(--brown2);letter-spacing:.6em;font-size:.8rem;margin-bottom:8px}
+footer{
+  margin-top:60px;background:var(--navy);border-top:4px solid var(--brown);
+  color:var(--sky);text-align:center;padding:26px 20px;font-size:.8rem;
+}
+footer p{max-width:760px;margin:0 auto 6px;line-height:1.8}
+
+@media(prefers-reduced-motion:reduce){.dia{animation:none;opacity:.7}}
+@media(max-width:600px){
+  .page-title h1{font-size:1.6rem}
+  .link-grid{grid-template-columns:1fr}
+  .form-card{padding:20px 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">時の<span>針</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html" class="current">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-title">
+  <span class="dia" style="left:8%;top:20%;--s:24px"></span>
+  <span class="dia br" style="left:20%;top:68%;--s:14px;animation-delay:1.5s"></span>
+  <span class="dia br" style="right:9%;top:18%;--s:22px;animation-delay:1s"></span>
+  <span class="dia" style="right:22%;top:66%;--s:12px;animation-delay:2.5s"></span>
+  <h1>ABOUT</h1>
+  <p>リンク &amp; お問い合わせ</p>
+</div>
+
+<main>
+  <section>
+    <h2>このサイトについて</h2>
+    <div class="intro">
+      <p>「時の針」は、時計について勉強したことを記録していくサイトです。<br>
+      勉強の進捗はBlogに、描いた漫画やイラストはGalleryに載せています。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>LINKS</h2>
+
+    <p class="group-label">漫画・イラスト掲載サイト</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://rookie.shonenjump.com/users/14728546961183734555" target="_blank" rel="noopener">
+        <div class="link-icon">📚</div>
+        <div class="link-text"><span class="link-name">ジャンプルーキー</span><span class="link-desc">オリジナル漫画を掲載中</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://www.pixiv.net/users/105728284" target="_blank" rel="noopener">
+        <div class="link-icon">🎨</div>
+        <div class="link-text"><span class="link-name">Pixiv</span><span class="link-desc">二次創作はこちらに掲載</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+
+    <p class="group-label">SNS・その他</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://bsky.app/profile/azaleaazalea88.bsky.social" target="_blank" rel="noopener">
+        <div class="link-icon">🦋</div>
+        <div class="link-text"><span class="link-name">Bluesky</span><span class="link-desc">近況・作品のお知らせ</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://www.youtube.com/@LilyPopins0512" target="_blank" rel="noopener">
+        <div class="link-icon">🎬</div>
+        <div class="link-text"><span class="link-name">YouTube（リリポピ）</span><span class="link-desc">動画チャンネル</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://lilipopi.github.io/lilypopins/" target="_blank" rel="noopener">
+        <div class="link-icon">🌸</div>
+        <div class="link-text"><span class="link-name">リリポピのホームページ</span><span class="link-desc">別サイト</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+
+    <p class="group-label">Azalea72のホームページ</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/storyreviewazalea/" target="_blank" rel="noopener">
+        <div class="link-icon">📖</div>
+        <div class="link-text"><span class="link-name">書評サイト</span><span class="link-desc">本・アニメ・映画・ゲーム・小説の備忘録</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/fan-english/" target="_blank" rel="noopener">
+        <div class="link-icon">🍔</div>
+        <div class="link-text"><span class="link-name">英語サイト（English Site）</span><span class="link-desc">英語話者と英語学習者に向けたサイト</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/fan-watercolor/" target="_blank" rel="noopener">
+        <div class="link-icon">☁️</div>
+        <div class="link-text"><span class="link-name">水彩画サイト</span><span class="link-desc">水彩画掲載</span></div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>CONTACT</h2>
+    <div class="form-card">
+      <p class="form-intro">ご質問・ご感想などはこちらからどうぞ。<br>Gmailで受け取り、返信いたします。</p>
+
+      <div data-fs-success class="form-success" style="display:none;">
+        <p>◆ メッセージを送信しました。ありがとうございます！</p>
+      </div>
+      <div data-fs-error class="form-error-global" style="display:none;"></div>
+
+      <form id="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="name">お名前</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Azalea72">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">メールアドレス <span class="required">*</span></label>
+          <input class="form-input" type="email" id="email" name="email" data-fs-field placeholder="example@email.com" required>
+          <span data-fs-error="email" class="field-error"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">メッセージ <span class="required">*</span></label>
+          <textarea class="form-textarea" id="message" name="message" data-fs-field placeholder="メッセージを入力してください…" rows="6" required></textarea>
+          <span data-fs-error="message" class="field-error"></span>
+        </div>
+        <button class="form-submit" type="submit" data-fs-submit-btn>◆ 送信する ◆</button>
+      </form>
+    </div>
+
+    <a class="back-link" href="index.html">← トップページに戻る</a>
+  </section>
+</main>
+
+<footer>
+  <div class="dia-line">◇ ◆ ◇ ◆ ◇</div>
+  <p>当サイトに掲載されている画像・文章・作品について、AI学習への利用、トレース（トレパク）、無断転載・転載、二次利用を禁止します。スクリーンショットの転載・無断引用はご遠慮ください。</p>
+  <p>Please refrain from using any images, text, or works on this website for AI training, tracing, unauthorized reproduction, redistribution, or secondary use.</p>
+  <p>&copy; 2026 時の針 / Hands of Time</p>
+</footer>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'maqvpvoz' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
