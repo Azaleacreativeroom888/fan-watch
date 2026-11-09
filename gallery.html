@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery | 時の針</title>
+<style>
+:root{
+  --navy:#0b1f3a;
+  --navy2:#13305a;
+  --blue:#2f6fb5;
+  --sky:#cfe3f7;
+  --brown:#7a4a2b;
+  --brown2:#a8703f;
+  --cream:#f6efe3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  background:var(--cream);color:var(--navy);line-height:1.9;
+}
+a{color:inherit;text-decoration:none}
+
+header{background:var(--navy);border-bottom:4px solid var(--brown);position:sticky;top:0;z-index:10}
+.header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+}
+.logo{color:var(--sky);font-size:1.4rem;letter-spacing:.15em;font-weight:bold}
+.logo span{color:var(--brown2)}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{
+  display:block;padding:6px 14px;color:var(--sky);font-size:.95rem;
+  border-radius:20px;border:1px solid transparent;transition:.2s;
+}
+nav a:hover,nav a.current{background:var(--blue);border-color:var(--sky);color:#fff}
+
+.page-title{
+  background:linear-gradient(160deg,var(--navy),var(--navy2));
+  color:var(--sky);text-align:center;padding:44px 20px 50px;
+  position:relative;overflow:hidden;
+}
+.page-title h1{font-size:2rem;letter-spacing:.25em;color:#fff;position:relative;z-index:1}
+.page-title p{color:var(--brown2);letter-spacing:.2em;font-size:.9rem;position:relative;z-index:1}
+
+.dia{
+  position:absolute;width:var(--s,24px);height:var(--s,24px);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  background:linear-gradient(135deg,#fff 0%,var(--sky) 35%,var(--blue) 70%,var(--navy2) 100%);
+  opacity:.7;pointer-events:none;animation:twinkle 4s ease-in-out infinite;
+}
+.dia.br{background:linear-gradient(135deg,#f6e3c8 0%,var(--brown2) 55%,var(--brown) 100%)}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.85)}50%{opacity:.95;transform:scale(1.1)}}
+
+main{max-width:1000px;margin:0 auto;padding:0 20px}
+section{padding:50px 0 10px}
+h2{font-size:1.5rem;text-align:center;letter-spacing:.2em;margin-bottom:26px}
+h2::after{
+  content:"◇ ◆ ◇";display:block;margin:8px auto 0;
+  font-size:.8rem;letter-spacing:.4em;color:var(--brown2);
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+.work{
+  background:#fff;border:2px solid var(--navy);border-radius:10px;
+  box-shadow:5px 5px 0 var(--brown);overflow:hidden;
+  transition:transform .2s;
+}
+.work:hover{transform:translateY(-4px)}
+.frame{
+  aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,var(--sky),#eaf3fc 50%,#f1e3d0);
+  border-bottom:2px solid var(--navy);position:relative;overflow:hidden;
+}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .ph{
+  width:56px;height:56px;
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  background:linear-gradient(135deg,#fff,var(--sky) 35%,var(--blue) 75%,var(--navy2));
+  opacity:.8;
+}
+.work.manga .frame .ph{background:linear-gradient(135deg,#f6e3c8,var(--brown2) 60%,var(--brown))}
+.caption{padding:12px 14px}
+.caption h3{font-size:1rem;color:var(--blue)}
+.caption h3::before{content:"◆ ";color:var(--brown2);font-size:.75em}
+.caption time{font-family:"Courier New",monospace;font-size:.8rem;color:var(--brown);font-weight:bold}
+
+.note{
+  max-width:640px;margin:36px auto 0;text-align:center;font-size:.9rem;
+  background:#fff;border-left:6px solid var(--blue);border-radius:6px;padding:12px 20px;
+}
+
+.dia-line{text-align:center;color:var(--brown2);letter-spacing:.6em;font-size:.8rem;margin-bottom:8px}
+footer{
+  margin-top:70px;background:var(--navy);border-top:4px solid var(--brown);
+  color:var(--sky);text-align:center;padding:26px 20px;font-size:.85rem;
+}
+@media(prefers-reduced-motion:reduce){.dia{animation:none;opacity:.7}}
+@media(max-width:600px){.page-title h1{font-size:1.6rem}.grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">時の<span>針</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html" class="current">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-title">
+  <span class="dia" style="left:8%;top:20%;--s:24px"></span>
+  <span class="dia br" style="left:20%;top:68%;--s:14px;animation-delay:1.5s"></span>
+  <span class="dia br" style="right:9%;top:18%;--s:22px;animation-delay:1s"></span>
+  <span class="dia" style="right:22%;top:66%;--s:12px;animation-delay:2.5s"></span>
+  <h1>GALLERY</h1>
+  <p>イラスト・漫画</p>
+</div>
+
+<main>
+  <section>
+    <h2>ILLUSTRATION</h2>
+    <div class="grid">
+      <!-- 画像を入れるときは <div class="ph"></div> を <img src="images/ファイル名.png" alt="作品名"> に置き換えてね -->
+      <article class="work">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>作品タイトル</h3><time>2026.10.28</time></div>
+      </article>
+      <article class="work">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>作品タイトル</h3><time>2026.10.28</time></div>
+      </article>
+      <article class="work">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>作品タイトル</h3><time>2026.10.28</time></div>
+      </article>
+      <article class="work">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>作品タイトル</h3><time>2026.10.28</time></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>MANGA</h2>
+    <div class="grid">
+      <article class="work manga">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>漫画タイトル</h3><time>2026.10.28</time></div>
+      </article>
+      <article class="work manga">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>漫画タイトル</h3><time>2026.10.28</time></div>
+      </article>
+      <article class="work manga">
+        <div class="frame"><div class="ph"></div></div>
+        <div class="caption"><h3>漫画タイトル</h3><time>2026.10.28</time></div>
+      </article>
+    </div>
+  </section>
+
+  <p class="note">作品は少しずつ追加していきます。時計をテーマにした絵や漫画も描いていく予定です。</p>
+</main>
+
+<footer>
+  <div class="dia-line">◇ ◆ ◇ ◆ ◇</div>
+  <p>&copy; 2026 時の針 / Hands of Time</p>
+</footer>
+
+</body>
+</html>
